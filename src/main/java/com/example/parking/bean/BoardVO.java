@@ -53,12 +53,12 @@ public class BoardVO {
         this.regDate = regDate;
     }
 
-    public Date getGetOutDate() {
+    public Date getOutDate() {
         return outDate;
     }
 
-    public void setGetOutDate(Date getOutDate) {
-        this.outDate = getOutDate;
+    public void setOutDate(Date outDate) {
+        this.outDate = outDate;
     }
 
     public boolean isOut() {
