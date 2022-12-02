@@ -4,12 +4,11 @@ import com.example.parking.bean.BoardVO;
 import com.example.parking.util.JDBCUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
+import java.util.List;
 
 @Repository
 public class BoardDAO {
@@ -29,48 +28,47 @@ public class BoardDAO {
     public int insertBoard(BoardVO vo) {
         System.out.println("===> JDBC로 insertBoard() 기능 처리");
         try {
-            conn = JDBCUtil.getConnection();
-            stmt = conn.prepareStatement(BOARD_INSERT);
-            stmt.setString(1, vo.getOwner());
-            stmt.setString(2, vo.getCarType());
-            stmt.setInt(3, vo.getCarNumber());
-            stmt.setString(4, vo.getFileName());
-            stmt.executeUpdate();
-            return 1;
+//            conn = JDBCUtil.getConnection();
+//            stmt = conn.prepareStatement(BOARD_INSERT);
+//            stmt.setString(1, vo.getOwner());
+//            stmt.setString(2, vo.getCarType());
+//            stmt.setInt(3, vo.getCarNumber());
+//            stmt.setString(4, vo.getFileName());
+//            stmt.executeUpdate();
+            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public void deleteBoard(BoardVO vo) {
+    public int deleteBoard(BoardVO vo) {
         System.out.println("===> JDBC로 deleteBoard() 기능 처리");
         try {
-            conn = JDBCUtil.getConnection();
-            stmt = conn.prepareStatement(BOARD_DELETE);
-            stmt.setInt(1, vo.getSeq());
-            stmt.executeUpdate();
+//            conn = JDBCUtil.getConnection();
+//            stmt = conn.prepareStatement(BOARD_DELETE);
+//            stmt.setInt(1, vo.getSeq());
+//            stmt.executeUpdate();
+            return jdbcTemplate.update(BOARD_DELETE, vo.getSeq());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     public int updateBoard(BoardVO vo) {
         System.out.println("===> JDBC로 updateBoard() 기능 처리");
         try {
-            conn = JDBCUtil.getConnection();
-            stmt = conn.prepareStatement(BOARD_UPDATE);
-            stmt.setString(1, vo.getOwner());
-            stmt.setString(2, vo.getCarType());
-            stmt.setInt(3, vo.getCarNumber());
-            stmt.setString(4, vo.getFileName());
-            stmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
-            stmt.setInt(6, vo.getSeq());
-
-
-//            System.out.println(vo.getTitle() + "-" + vo.getWriter() + "-" + vo.getContent() + "-" + vo.getFileName() + "-" + vo.getSeq());
-            stmt.executeUpdate();
-            return 1;
+//            conn = JDBCUtil.getConnection();
+//            stmt = conn.prepareStatement(BOARD_UPDATE);
+//            stmt.setString(1, vo.getOwner());
+//            stmt.setString(2, vo.getCarType());
+//            stmt.setInt(3, vo.getCarNumber());
+//            stmt.setString(4, vo.getFileName());
+//            stmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+//            stmt.setInt(6, vo.getSeq());
+//            stmt.executeUpdate();
+            return jdbcTemplate.update(BOARD_UPDATE, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), new Timestamp(System.currentTimeMillis()), vo.getSeq());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,21 +80,36 @@ public class BoardDAO {
         BoardVO one = new BoardVO();
         System.out.println("===> JDBC로 getBoard() 기능 처리");
         try {
-            conn = JDBCUtil.getConnection();
-            stmt = conn.prepareStatement(BOARD_GET);
-            stmt.setInt(1, seq);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                one.setSeq(rs.getInt("seq"));
-                one.setOwner(rs.getString("owner"));
-                one.setCarType(rs.getString("carType"));
-                one.setCarNumber(rs.getInt("carNumber"));
-//                one.setCnt(rs.getInt("cnt"));
-            }
-            rs.close();
+
+            return jdbcTemplate.queryForObject(BOARD_GET, new BoardRowMapper());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return one;
+    }
+
+    public List<BoardVO> getBoardList(){
+        return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+    }
+
+    class BoardRowMapper implements RowMapper<BoardVO>{
+        Date current = new Date(new Timestamp(System.currentTimeMillis()).getTime());
+        @Override
+        public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+            BoardVO one = new BoardVO();
+            Date temp = rs.getDate("regdate");
+
+            one.setSeq(rs.getInt("seq"));
+            one.setCarType(rs.getString("owner"));
+            one.setCarNumber(rs.getInt("carNumber"));
+            one.setCarType(rs.getString("carType"));
+            one.setFileName(rs.getString("fileName"));
+            one.setRegDate(temp);
+            one.setOutDate(rs.getDate("outdate"));
+            long diffHor = (temp.getTime() - current.getTime()) / 3600000; //시 차이
+            System.out.println("시간차이는: " + diffHor);
+            one.setFee((int) diffHor * 1000);
+            return one;
+        }
     }
 }
