@@ -14,8 +14,8 @@
 <form action="addok" method="post">
     <table>
         <li>
-            <label class="category" for="category">Category</label>
-            <select id="category" name="category">
+            <label class="category" for="carType">차종</label>
+            <select id="carType" name="carType">
                 <option value="경차">경차</option>
                 <option value="승용차" selected>승용차</option>
                 <option value="승합차">승합차</option>
@@ -33,9 +33,13 @@
             <td><input type="text" name="parkingSpot"/></td>
         </tr>
         <tr>
-            <td align="left"><input type='file' name="photo"></td>
+            <td>차량번호: </td>
+            <td><input type="text" name="carNumber"/></td>
+        </tr>
         <tr>
-            <td><a href="list.jsp">목록으로 돌아가기</a></td>
+            <td align="left"><input type='file' name="fileName"></td>
+        <tr>
+            <td><a href="list">목록으로 돌아가기</a></td>
             <td align="right"><input type="submit" value="차량 등록"/></td>
         </tr>
     </table>
