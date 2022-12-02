@@ -18,7 +18,7 @@ public class BoardDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot) values (?, ?, ?, ?, ?)";
+    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate) values (?, ?, ?, ?, ?, ?)";
     private final String BOARD_UPDATE = "update PARKING set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
     private final String BOARD_DELETE = "delete from PARKING  where seq=?";
     private final String BOARD_GET = "select * from PARKING  where seq=?";
@@ -34,7 +34,7 @@ public class BoardDAO {
 //            stmt.setInt(3, vo.getCarNumber());
 //            stmt.setString(4, vo.getFileName());
 //            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), vo.getParkingSpot());
+            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), vo.getParkingSpot(), new Timestamp(System.currentTimeMillis()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,13 +99,16 @@ public class BoardDAO {
             Date temp = rs.getDate("regdate");
 
             one.setSeq(rs.getInt("seq"));
-            one.setCarType(rs.getString("owner"));
+            one.setOwner(rs.getString("owner"));
             one.setCarNumber(rs.getInt("carNumber"));
             one.setCarType(rs.getString("carType"));
             one.setFileName(rs.getString("fileName"));
             one.setRegDate(temp);
             one.setOutDate(rs.getDate("outdate"));
             one.setParkingSpot(rs.getString("parkingSpot"));
+
+            System.out.println("현재시간:" + current.getTime());
+            System.out.println("입차시간:" + temp.getTime());
             long diffHor = (current.getTime() - temp.getTime() ) / 3600000; //시 차이
             System.out.println("시간차이는: " + diffHor);
             one.setFee((int) diffHor * 1000);
