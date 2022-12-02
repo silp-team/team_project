@@ -12,6 +12,7 @@ public class BoardVO {
     private boolean isOut;
     private int fee;
     private String fileName;
+    private String parkingSpot;
 
     public int getSeq() {
         return seq;
@@ -83,5 +84,13 @@ public class BoardVO {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getParkingSpot() {
+        return parkingSpot;
+    }
+
+    public void setParkingSpot(String parkingSpot) {
+        this.parkingSpot = parkingSpot;
     }
 }

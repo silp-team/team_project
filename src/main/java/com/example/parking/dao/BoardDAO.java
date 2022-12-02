@@ -18,8 +18,8 @@ public class BoardDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final String BOARD_INSERT = "insert into BOARD (owner, carType, carNumber, fileName) values (?, ?, ?, ?, ?)";
-    private final String BOARD_UPDATE = "update BOARD set owner=?, carType=?, carNumber=?, fileName=?, outDate=? where seq=?";
+    private final String BOARD_INSERT = "insert into BOARD (owner, carType, carNumber, fileName, parkingSpot) values (?, ?, ?, ?, ?, ?)";
+    private final String BOARD_UPDATE = "update BOARD set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
     private final String BOARD_DELETE = "delete from BOARD  where seq=?";
     private final String BOARD_GET = "select * from BOARD  where seq=?";
     private final String BOARD_LIST = "select * from BOARD order by seq desc";
@@ -34,7 +34,7 @@ public class BoardDAO {
 //            stmt.setInt(3, vo.getCarNumber());
 //            stmt.setString(4, vo.getFileName());
 //            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName());
+            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), vo.getParkingSpot());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class BoardDAO {
 //            stmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
 //            stmt.setInt(6, vo.getSeq());
 //            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_UPDATE, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), new Timestamp(System.currentTimeMillis()), vo.getSeq());
+            return jdbcTemplate.update(BOARD_UPDATE, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), new Timestamp(System.currentTimeMillis()), vo.getParkingSpot(), vo.getSeq());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,6 +105,7 @@ public class BoardDAO {
             one.setFileName(rs.getString("fileName"));
             one.setRegDate(temp);
             one.setOutDate(rs.getDate("outdate"));
+            one.setParkingSpot(rs.getString("parkingSpot"));
             long diffHor = (temp.getTime() - current.getTime()) / 3600000; //시 차이
             System.out.println("시간차이는: " + diffHor);
             one.setFee((int) diffHor * 1000);
