@@ -17,40 +17,48 @@ public class BoardController {
     BoardServiceImpl boardService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String boardlist(Model model){
+    public String boardlist(Model model) {
         model.addAttribute("list", boardService.getBoardList());
-        return  "list";
+        return "list";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addPost(){
-        return  "addpostform";
+    public String addPost() {
+        return "addpostform";
     }
 
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
-    public String addPostOK(BoardVO vo){
-        if(boardService.insertBoard(vo) == 0){
+    public String addPostOK(BoardVO vo) {
+        if (boardService.insertBoard(vo) == 0) {
             System.out.println("데이터 추가 실패");
-        }
-        else{
+        } else {
             System.out.println("데이터 추가 성공!!!");
         }
-        return  "redirect:list";
+        return "redirect:list";
     }
 
     @RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
-    public String editPost(@PathVariable("id") int id, Model model){
-        BoardVO boardVO =boardService.getBoard(id);
-        model.addAttribute("u", boardVO);
-        return  "editform";
+    public String editPost(@PathVariable("id") int id, Model model) {
+        BoardVO boardVO = boardService.getBoard(id);
+        model.addAttribute("boardVO", boardVO);
+        return "editform";
     }
 
     @RequestMapping(value = "/editok", method = RequestMethod.POST)
-    public String editPostOk(BoardVO vo){
-        if(boardService.updateBoard(vo) == 0)
+    public String editPostOk(BoardVO vo) {
+        if (boardService.updateBoard(vo) == 0)
+            System.out.println("데이터 수정 실패");
+        else
+            System.out.println("데이터 수정 성공!!");
+        return "redirect:../list";
+    }
+
+    @RequestMapping(value = "/deleteok/{id}", method = RequestMethod.POST)
+    public String deletePostOk(@PathVariable("id") int id) {
+        if (boardService.deletBoard(id) == 0)
             System.out.println("데이터 삭제 실패");
         else
             System.out.println("데이터 삭제 성공!!");
-        return  "redirect:../list";
+        return "redirect:../list";
     }
 }
