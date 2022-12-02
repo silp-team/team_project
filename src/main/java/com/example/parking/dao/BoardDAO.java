@@ -18,7 +18,7 @@ public class BoardDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot) values (?, ?, ?, ?, ?, ?)";
+    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot) values (?, ?, ?, ?, ?)";
     private final String BOARD_UPDATE = "update PARKING set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
     private final String BOARD_DELETE = "delete from PARKING  where seq=?";
     private final String BOARD_GET = "select * from PARKING  where seq=?";
@@ -106,7 +106,7 @@ public class BoardDAO {
             one.setRegDate(temp);
             one.setOutDate(rs.getDate("outdate"));
             one.setParkingSpot(rs.getString("parkingSpot"));
-            long diffHor = (temp.getTime() - current.getTime()) / 3600000; //시 차이
+            long diffHor = (current.getTime() - temp.getTime() ) / 3600000; //시 차이
             System.out.println("시간차이는: " + diffHor);
             one.setFee((int) diffHor * 1000);
             return one;

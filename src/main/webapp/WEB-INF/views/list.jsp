@@ -58,7 +58,7 @@
             <td>${u.seq}</td>
             <td><img src="${pageContext.request.contextPath }/upload/${u.getFileName()}" class="photo" width="100px"></td>
             <td>${u.carType}</td>
-            <td>${u.parking}</td>
+            <td>${u.parkingSpot}</td>
             <td>${u.owner}</td>
             <td>${u.regDate}</td>
             <td>${u.fee}</td>

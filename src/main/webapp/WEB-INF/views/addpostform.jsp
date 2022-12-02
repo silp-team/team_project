@@ -11,7 +11,7 @@
     <title>등록하기</title>
 </head>
 <body>
-<form action="addpost.jsp" method="post" enctype="multipart/form-data">
+<form action="addok" method="post">
     <table>
         <li>
             <label class="category" for="category">Category</label>
