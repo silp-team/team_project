@@ -35,7 +35,7 @@
 <script>
     function delete_ok(id){
         var a = confirm("정말로 삭제하겠습니까?");
-        if(a) location.href='deletepost.jsp?id=' + id;
+        if(a) location.href='deleteok/' + id;
     }
 </script>
 <body>
@@ -43,7 +43,7 @@
 <table id="list" width="90%">
     <tr>
         <th>주차 순번</th>
-        <th>차량 사진</th>
+        <th>차량 모델</th>
         <th>차종</th>
         <th>주차장 위치</th>
         <th>차량 주인</th>
@@ -56,7 +56,8 @@
     <c:forEach items="${list}" var="u">
         <tr>
             <td>${u.seq}</td>
-            <td><img src="${pageContext.request.contextPath }/upload/${u.getFileName()}" class="photo" width="100px"></td>
+<%--            <td><img src="./palisade.png" width="300"> </td>--%>
+<%--            <td><img src="${pageContext.request.contextPath }/upload/${u.getFileName()}" class="photo" width="100px"></td>--%>
             <td>${u.carType}</td>
             <td>${u.parkingSpot}</td>
             <td>${u.owner}</td>

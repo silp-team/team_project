@@ -33,6 +33,10 @@
             <td><input type="text" name="parkingSpot"/></td>
         </tr>
         <tr>
+            <td>차 모델:</td>
+            <td><input type="text" name="carModel"/></td>
+        </tr>
+        <tr>
             <td>차량번호: </td>
             <td><input type="text" name="carNumber"/></td>
         </tr>
