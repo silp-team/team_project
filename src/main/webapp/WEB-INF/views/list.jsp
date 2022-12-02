@@ -11,6 +11,33 @@
 <head>
     <title>야호</title>
 </head>
+<style>
+    #list {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #list td, #list th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align:center;
+    }
+    #list tr:nth-child(even){background-color: #f2f2f2;}
+    #list tr:hover {background-color: #ddd;}
+    #list th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #006bb3;
+        color: white;
+    }
+</style>
+<script>
+    function delete_ok(id){
+        var a = confirm("정말로 삭제하겠습니까?");
+        if(a) location.href='deletepost.jsp?id=' + id;
+    }
+</script>
 <body>
 <h1>주차장 관리 현황</h1>
 <table id="list" width="90%">
