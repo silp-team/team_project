@@ -18,11 +18,11 @@ public class BoardDAO {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final String BOARD_INSERT = "insert into BOARD (owner, carType, carNumber, fileName, parkingSpot) values (?, ?, ?, ?, ?, ?)";
-    private final String BOARD_UPDATE = "update BOARD set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
-    private final String BOARD_DELETE = "delete from BOARD  where seq=?";
-    private final String BOARD_GET = "select * from BOARD  where seq=?";
-    private final String BOARD_LIST = "select * from BOARD order by seq desc";
+    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot) values (?, ?, ?, ?, ?, ?)";
+    private final String BOARD_UPDATE = "update PARKING set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
+    private final String BOARD_DELETE = "delete from PARKING  where seq=?";
+    private final String BOARD_GET = "select * from PARKING  where seq=?";
+    private final String BOARD_LIST = "select * from PARKING order by seq desc";
 
     public int insertBoard(BoardVO vo) {
         System.out.println("===> JDBC로 insertBoard() 기능 처리");

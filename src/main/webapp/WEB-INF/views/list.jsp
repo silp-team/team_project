@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dale
@@ -6,7 +5,8 @@
   Time: 3:29 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>야호</title>
@@ -37,8 +37,6 @@
             <td>${u.fee}</td>
             <td><a href="editform/${u.getSeq()}">Edit</a></td>
             <td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
-<%--            <td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>--%>
-<%--            <td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>--%>
         </tr>
     </c:forEach>
 </table>
