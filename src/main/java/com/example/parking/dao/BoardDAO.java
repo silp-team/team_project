@@ -1,7 +1,6 @@
 package com.example.parking.dao;
 
 import com.example.parking.bean.BoardVO;
-import com.example.parking.util.JDBCUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -42,14 +41,14 @@ public class BoardDAO {
         return 0;
     }
 
-    public int deleteBoard(BoardVO vo) {
+    public int deleteBoard(int seq) {
         System.out.println("===> JDBC로 deleteBoard() 기능 처리");
         try {
 //            conn = JDBCUtil.getConnection();
 //            stmt = conn.prepareStatement(BOARD_DELETE);
 //            stmt.setInt(1, vo.getSeq());
 //            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_DELETE, vo.getSeq());
+            return jdbcTemplate.update(BOARD_DELETE, seq);
         } catch (Exception e) {
             e.printStackTrace();
         }
