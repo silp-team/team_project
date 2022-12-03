@@ -85,6 +85,7 @@ public class BoardDAO {
         Date current = new Date(new Timestamp(System.currentTimeMillis()).getTime());
         @Override
         public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+            System.out.println("읽기 시작!!");
             BoardVO one = new BoardVO();
             String tt = rs.getString("regdate");
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
@@ -99,6 +100,14 @@ public class BoardDAO {
             long diffHor = (current.getTime() - temp.getTime() ) / 3600000; //시 차이
             System.out.println("시간차이는: " + diffHor);
             one.setFee((int) diffHor * 1000);
+            one.setSeq(rs.getInt("seq"));
+            one.setOwner(rs.getString("owner"));
+            one.setCarNumber(rs.getInt("carNumber"));
+            one.setCarType(rs.getString("carType"));
+            one.setFileName(rs.getString("fileName"));
+            one.setRegDate(temp);
+//            one.setOutDate(rs.getDate("outdate"));
+            one.setParkingSpot(rs.getString("parkingSpot"));
             return one;
         }
     }
