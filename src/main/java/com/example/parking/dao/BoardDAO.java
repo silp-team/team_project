@@ -7,7 +7,10 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Date;
 
 @Repository
 public class BoardDAO {
@@ -27,14 +30,9 @@ public class BoardDAO {
     public int insertBoard(BoardVO vo) {
         System.out.println("===> JDBC로 insertBoard() 기능 처리");
         try {
-//            conn = JDBCUtil.getConnection();
-//            stmt = conn.prepareStatement(BOARD_INSERT);
-//            stmt.setString(1, vo.getOwner());
-//            stmt.setString(2, vo.getCarType());
-//            stmt.setInt(3, vo.getCarNumber());
-//            stmt.setString(4, vo.getFileName());
-//            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), vo.getParkingSpot(), new Timestamp(System.currentTimeMillis()));
+            String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+
+            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), vo.getParkingSpot(), time);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,16 +56,8 @@ public class BoardDAO {
     public int updateBoard(BoardVO vo) {
         System.out.println("===> JDBC로 updateBoard() 기능 처리");
         try {
-//            conn = JDBCUtil.getConnection();
-//            stmt = conn.prepareStatement(BOARD_UPDATE);
-//            stmt.setString(1, vo.getOwner());
-//            stmt.setString(2, vo.getCarType());
-//            stmt.setInt(3, vo.getCarNumber());
-//            stmt.setString(4, vo.getFileName());
-//            stmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
-//            stmt.setInt(6, vo.getSeq());
-//            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_UPDATE, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), new Timestamp(System.currentTimeMillis()), vo.getParkingSpot(), vo.getSeq());
+            String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+            return jdbcTemplate.update(BOARD_UPDATE, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), time, vo.getParkingSpot(), vo.getSeq());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,17 +86,14 @@ public class BoardDAO {
         @Override
         public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
             BoardVO one = new BoardVO();
-            Date temp = rs.getDate("regdate");
-
-            one.setSeq(rs.getInt("seq"));
-            one.setOwner(rs.getString("owner"));
-            one.setCarNumber(rs.getInt("carNumber"));
-            one.setCarType(rs.getString("carType"));
-            one.setFileName(rs.getString("fileName"));
-            one.setRegDate(temp);
-            one.setOutDate(rs.getDate("outdate"));
-            one.setParkingSpot(rs.getString("parkingSpot"));
-
+            String tt = rs.getString("regdate");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+            Date temp = null;
+            try {
+                temp = formatter.parse(tt);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
             System.out.println("현재시간:" + current.getTime());
             System.out.println("입차시간:" + temp.getTime());
             long diffHor = (current.getTime() - temp.getTime() ) / 3600000; //시 차이
