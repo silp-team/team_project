@@ -25,6 +25,10 @@
             <td><form:input path="owner"/></td>
         </tr>
         <tr>
+            <td>차량 모델</td>
+            <td><form:input path="fileName"/></td>
+        </tr>
+        <tr>
             <td>주차장 위치</td>
             <td><form:input path="parkingSpot"/></td>
         </tr>

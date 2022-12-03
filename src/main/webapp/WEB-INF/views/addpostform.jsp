@@ -34,14 +34,14 @@
         </tr>
         <tr>
             <td>차 모델:</td>
-            <td><input type="text" name="carModel"/></td>
+            <td><input type="text" name="fileName"/></td>
         </tr>
         <tr>
             <td>차량번호: </td>
             <td><input type="text" name="carNumber"/></td>
         </tr>
         <tr>
-            <td align="left"><input type='file' name="fileName"></td>
+<%--            <td align="left"><input type='file' name="fileName"></td>--%>
         <tr>
             <td><a href="list">목록으로 돌아가기</a></td>
             <td align="right"><input type="submit" value="차량 등록"/></td>

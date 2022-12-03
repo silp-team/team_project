@@ -58,6 +58,7 @@
             <td>${u.seq}</td>
 <%--            <td><img src="./palisade.png" width="300"> </td>--%>
 <%--            <td><img src="${pageContext.request.contextPath }/upload/${u.getFileName()}" class="photo" width="100px"></td>--%>
+            <td>${u.fileName}</td>
             <td>${u.carType}</td>
             <td>${u.parkingSpot}</td>
             <td>${u.owner}</td>
