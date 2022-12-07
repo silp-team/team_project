@@ -9,20 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f71678-4e5b-4654-82c1-c318b6682824" name="Changes" comment="feat: sql 추가">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/palisade.png" afterDir="false" />
+    <list default="true" id="f7f71678-4e5b-4654-82c1-c318b6682824" name="Changes" comment="feat: UserServiceImpl.java 생성">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/util/LoginCheckInterceptor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/palisade.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palisade.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/chiwawa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/palisade.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/bean/BoardVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/bean/BoardVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/dao/BoardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/dao/BoardDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/mappers/board-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/board-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/user-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/user-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +33,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
-        <option value="Jsp File" />
         <option value="spring-beans.schema" />
+        <option value="Kotlin Class" />
+        <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,26 +59,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dale/eclipse-workspace/team_pr2/src/main/webapp/WEB-INF/views&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.57931036&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;a9981ffca9a606826f57c386a1e25ad6&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/dale/eclipse-workspace/team_pr2/src/main/webapp/WEB-INF/views",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.57931036",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "spring.configuration.checksum": "a9981ffca9a606826f57c386a1e25ad6"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
@@ -88,9 +86,10 @@
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -206,7 +205,7 @@
       <workItem from="1670056946634" duration="100000" />
       <workItem from="1670057051737" duration="162000" />
       <workItem from="1670059982137" duration="1679000" />
-      <workItem from="1670410696242" duration="4500000" />
+      <workItem from="1670410696242" duration="10466000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1669942643883</created>
@@ -425,7 +424,42 @@
       <option name="project" value="LOCAL" />
       <updated>1670412910335</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="feat: 로그인 직전">
+      <created>1670415766531</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1670415766531</updated>
+    </task>
+    <task id="LOCAL-00033" summary="feat: user-mapper.xml 작성">
+      <created>1670416256537</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1670416256537</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat: UserVO.java 생성">
+      <created>1670416339909</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1670416339909</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat: UserDAO.java 생성">
+      <created>1670416721069</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1670416721069</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: UserServiceImpl.java 생성">
+      <created>1670416736877</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1670416736877</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,11 +477,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Create BoardService.java" />
-    <MESSAGE value="Create BoardServiceImpl.java" />
-    <MESSAGE value="Create BoardController.java" />
-    <MESSAGE value="chore: 파라미터 타입 오기입 수정" />
-    <MESSAGE value="chore: 뭔가 고침" />
     <MESSAGE value="feat: 주차장 자리에 대한 관련 함수 추가" />
     <MESSAGE value="feat: list.jsp 추가" />
     <MESSAGE value="feat: index에서 list로 잘 넘어감" />
@@ -468,7 +497,12 @@
     <MESSAGE value="feat: 뭔가 했겠지" />
     <MESSAGE value="feat: board-mapper.xml 생성" />
     <MESSAGE value="feat: sql 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: sql 추가" />
+    <MESSAGE value="feat: 로그인 직전" />
+    <MESSAGE value="feat: user-mapper.xml 작성" />
+    <MESSAGE value="feat: UserVO.java 생성" />
+    <MESSAGE value="feat: UserDAO.java 생성" />
+    <MESSAGE value="feat: UserServiceImpl.java 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: UserServiceImpl.java 생성" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
