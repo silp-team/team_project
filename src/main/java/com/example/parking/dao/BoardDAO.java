@@ -1,6 +1,7 @@
 package com.example.parking.dao;
 
 import com.example.parking.bean.BoardVO;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,96 +20,68 @@ public class BoardDAO {
     ResultSet rs = null;
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    SqlSession sqlSession;
+//    JdbcTemplate jdbcTemplate;
 
-    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate) values (?, ?, ?, ?, ?, ?)";
-    private final String BOARD_UPDATE = "update PARKING set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
-    private final String BOARD_DELETE = "delete from PARKING  where seq=?";
-    private final String BOARD_GET = "select * from PARKING  where seq=";
-    private final String BOARD_LIST = "select * from PARKING order by seq desc";
+//    private final String BOARD_INSERT = "insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate) values (?, ?, ?, ?, ?, ?)";
+//    private final String BOARD_UPDATE = "update PARKING set owner=?, carType=?, carNumber=?, fileName=?, outDate=?, parkingSpot=? where seq=?";
+//    private final String BOARD_DELETE = "delete from PARKING  where seq=?";
+//    private final String BOARD_GET = "select * from PARKING  where seq=";
+//    private final String BOARD_LIST = "select * from PARKING order by seq desc";
 
     public int insertBoard(BoardVO vo) {
-        System.out.println("===> JDBC로 insertBoard() 기능 처리");
-        try {
-            String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-
-            return jdbcTemplate.update(BOARD_INSERT, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), vo.getParkingSpot(), time);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
+        int result = sqlSession.insert("Board.insertBoard", vo);
+        return result;
     }
 
     public int deleteBoard(int seq) {
-        System.out.println("===> JDBC로 deleteBoard() 기능 처리");
-        try {
-//            conn = JDBCUtil.getConnection();
-//            stmt = conn.prepareStatement(BOARD_DELETE);
-//            stmt.setInt(1, vo.getSeq());
-//            stmt.executeUpdate();
-            return jdbcTemplate.update(BOARD_DELETE, seq);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
+        int result = sqlSession.delete("Board.deleteBoard", seq);
+        return result;
     }
 
     public int updateBoard(BoardVO vo) {
-        System.out.println("===> JDBC로 updateBoard() 기능 처리");
-        try {
-            String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-            return jdbcTemplate.update(BOARD_UPDATE, vo.getOwner(), vo.getCarType(), vo.getCarNumber(), vo.getFileName(), time, vo.getParkingSpot(), vo.getSeq());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
+        int result = sqlSession.delete("Board.updateBoard", vo);
+        return result;
     }
 
     public BoardVO getBoard(int seq) {
-        BoardVO one = new BoardVO();
-        System.out.println("===> JDBC로 getBoard() 기능 처리");
-        try {
-            String t = BOARD_GET + seq;
-            return jdbcTemplate.queryForObject(t, new BoardRowMapper());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        BoardVO one = sqlSession.selectOne("Board.getBoard", seq);
         return one;
     }
 
     public List<BoardVO> getBoardList(){
-        return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+        List<BoardVO> list = sqlSession.selectList("Board.getBoardList");
+        return list;
     }
 
-    class BoardRowMapper implements RowMapper<BoardVO>{
-        Date current = new Date(new Timestamp(System.currentTimeMillis()).getTime());
-        @Override
-        public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
-            System.out.println("읽기 시작!!");
-            BoardVO one = new BoardVO();
-            String tt = rs.getString("regdate");
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-            Date temp = null;
-            try {
-                temp = formatter.parse(tt);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("현재시간:" + current.getTime());
-            System.out.println("입차시간:" + temp.getTime());
-            long diffHor = (current.getTime() - temp.getTime() ) / 3600000; //시 차이
-            System.out.println("시간차이는: " + diffHor);
-            one.setFee((int) diffHor * 1000);
-            one.setSeq(rs.getInt("seq"));
-            one.setOwner(rs.getString("owner"));
-            one.setCarNumber(rs.getInt("carNumber"));
-            one.setCarType(rs.getString("carType"));
-            one.setFileName(rs.getString("fileName"));
-            one.setRegDate(temp);
-//            one.setOutDate(rs.getDate("outdate"));
-            one.setParkingSpot(rs.getString("parkingSpot"));
-            return one;
-        }
-    }
+//    class BoardRowMapper implements RowMapper<BoardVO>{
+//        Date current = new Date(new Timestamp(System.currentTimeMillis()).getTime());
+//        @Override
+//        public BoardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
+//            System.out.println("읽기 시작!!");
+//            BoardVO one = new BoardVO();
+//            String tt = rs.getString("regdate");
+//            SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+//            Date temp = null;
+//            try {
+//                temp = formatter.parse(tt);
+//            } catch (ParseException e) {
+//                throw new RuntimeException(e);
+//            }
+//            System.out.println("현재시간:" + current.getTime());
+//            System.out.println("입차시간:" + temp.getTime());
+//            long diffHor = (current.getTime() - temp.getTime() ) / 3600000; //시 차이
+//            System.out.println("시간차이는: " + diffHor);
+//            one.setFee((int) diffHor * 1000);
+//            one.setSeq(rs.getInt("seq"));
+//            one.setOwner(rs.getString("owner"));
+//            one.setCarNumber(rs.getInt("carNumber"));
+//            one.setCarType(rs.getString("carType"));
+//            one.setFileName(rs.getString("fileName"));
+//            one.setRegDate(temp);
+////            one.setOutDate(rs.getDate("outdate"));
+//            one.setParkingSpot(rs.getString("parkingSpot"));
+//            return one;
+//        }
+//    }
 }
