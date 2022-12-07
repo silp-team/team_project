@@ -51,6 +51,9 @@ public class BoardDAO {
 
     public List<BoardVO> getBoardList(){
         List<BoardVO> list = sqlSession.selectList("Board.getBoardList");
+        for(BoardVO t : list){
+//            print(t.)
+        }
         return list;
     }
 

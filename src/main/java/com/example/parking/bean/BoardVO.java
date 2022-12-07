@@ -7,8 +7,8 @@ public class BoardVO {
     private String owner;
     private String carType;
     private int carNumber;
-    private Date regDate;
-    private Date outDate;
+    private String regDate;
+    private String outDate;
     private boolean isOut;
     private int fee;
     private String fileName;
@@ -46,19 +46,19 @@ public class BoardVO {
         this.carNumber = carNumber;
     }
 
-    public Date getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
 
-    public Date getOutDate() {
+    public String getOutDate() {
         return outDate;
     }
 
-    public void setOutDate(Date outDate) {
+    public void setOutDate(String outDate) {
         this.outDate = outDate;
     }
 

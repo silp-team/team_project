@@ -9,15 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7f71678-4e5b-4654-82c1-c318b6682824" name="Changes" comment="feat: dao에서 잘못 삭제된 부분 다시 가져옴">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+    <list default="true" id="f7f71678-4e5b-4654-82c1-c318b6682824" name="Changes" comment="feat: sql 추가">
       <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/resources/img/palisade.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/palisade.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/palisade.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/bean/BoardVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/bean/BoardVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/dao/BoardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/dao/BoardDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/mappers/board-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/board-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/parking/service/BoardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +206,7 @@
       <workItem from="1670056946634" duration="100000" />
       <workItem from="1670057051737" duration="162000" />
       <workItem from="1670059982137" duration="1679000" />
-      <workItem from="1670410696242" duration="902000" />
+      <workItem from="1670410696242" duration="4500000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1669942643883</created>
@@ -378,7 +383,49 @@
       <option name="project" value="LOCAL" />
       <updated>1670062011953</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat: dependency 추가">
+      <created>1670411697180</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1670411697180</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat: mybatis-config.xml 생성">
+      <created>1670411712501</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1670411712501</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat: dataSources.xml 생성">
+      <created>1670411729788</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1670411729788</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feat: 뭔가 했겠지">
+      <created>1670411743891</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1670411743891</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feat: board-mapper.xml 생성">
+      <created>1670412891574</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1670412891574</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat: sql 추가">
+      <created>1670412910335</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1670412910335</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,11 +443,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="init commit" />
-    <MESSAGE value="working on project" />
-    <MESSAGE value="Create JDBCUtil.java" />
-    <MESSAGE value="Working on dao" />
-    <MESSAGE value="Dao done" />
     <MESSAGE value="Create BoardService.java" />
     <MESSAGE value="Create BoardServiceImpl.java" />
     <MESSAGE value="Create BoardController.java" />
@@ -420,7 +462,13 @@
     <MESSAGE value="feat: editform.jsp에서 차량 모델도 바꿀 수 있게 했음" />
     <MESSAGE value="feat: db에서 regdate랑 outdate도 varchar 형식으로 바꿈, 그에 따라 추가할 때 date-&gt;string 변환, 불러올때 string -&gt; date 변화함" />
     <MESSAGE value="feat: dao에서 잘못 삭제된 부분 다시 가져옴" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: dao에서 잘못 삭제된 부분 다시 가져옴" />
+    <MESSAGE value="feat: dependency 추가" />
+    <MESSAGE value="feat: mybatis-config.xml 생성" />
+    <MESSAGE value="feat: dataSources.xml 생성" />
+    <MESSAGE value="feat: 뭔가 했겠지" />
+    <MESSAGE value="feat: board-mapper.xml 생성" />
+    <MESSAGE value="feat: sql 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: sql 추가" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
