@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.SimpleDateFormat;
+
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
@@ -29,6 +31,7 @@ public class BoardController {
 
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
     public String addPostOK(BoardVO vo) {
+        vo.setRegDate(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
         if (boardService.insertBoard(vo) == 0) {
             System.out.println("데이터 추가 실패");
         } else {

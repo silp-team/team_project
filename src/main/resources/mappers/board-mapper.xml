@@ -3,7 +3,7 @@
 <mapper namespace="Board">
     <insert id="insertBoard">
         insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate)
-        values (#{owner}, #{carType}, #{carNumber}, #{fileName}, #{parkingSpot}, #{regdate})
+        values (#{owner}, #{carType}, #{carNumber}, #{fileName}, #{parkingSpot}, #{regDate})
     </insert>
     <update id="updateBoard">
         update PARKING
