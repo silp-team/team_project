@@ -71,6 +71,6 @@
 </table>
 <br>
 <a href="add">Add New Post</a>
-
+<button type="logout" onclick="location.href='../login/logout'">Logout</button>
 </body>
 </html>
