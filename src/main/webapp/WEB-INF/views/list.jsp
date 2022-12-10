@@ -32,6 +32,7 @@
         background-color: #006bb3;
         color: white;
     }
+
     .button1 {width: 100px;
         height: 50px;}
     .button {
