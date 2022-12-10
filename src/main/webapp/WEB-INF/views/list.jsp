@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>야호</title>
+    <title>주차 관리 시스템</title>
 </head>
 <style>
     #list {
@@ -23,6 +23,7 @@
         text-align:center;
     }
     #list tr:nth-child(even){background-color: #f2f2f2;}
+    #list tr:nth-child(odd){background-color: #f2f2f2;}
     #list tr:hover {background-color: #ddd;}
     #list th {
         padding-top: 12px;
@@ -31,6 +32,22 @@
         background-color: #006bb3;
         color: white;
     }
+    .button1 {width: 100px;
+        height: 50px;}
+    .button {
+        background-color: #2689e0;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    body{background: linear-gradient(lightCyan, skyBlue, deepSkyBlue); height: 100vw}
+
 </style>
 <script>
     function delete_ok(id){
@@ -39,6 +56,10 @@
     }
 </script>
 <body>
+
+<div style="float: right">
+    <button type="logout" class="button button1" onclick="location.href='../login/logout'"> Logout </button>
+</div>
 <h1>주차장 관리 현황</h1>
 <table id="list" width="90%">
     <tr>
@@ -70,7 +91,9 @@
     </c:forEach>
 </table>
 <br>
-<a href="add">Add New Post</a>
-<button type="logout" onclick="location.href='../login/logout'">Logout</button>
+<div style="float: right">
+    <button type="button" class="button button1" onclick="location.href='add'"> add </button>
+</div>
+
 </body>
 </html>
