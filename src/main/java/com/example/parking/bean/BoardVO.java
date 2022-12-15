@@ -14,6 +14,16 @@ public class BoardVO {
     private String fileName;
     private String parkingSpot;
 
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
+    private String period;
+
     public int getSeq() {
         return seq;
     }

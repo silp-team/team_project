@@ -32,6 +32,12 @@
             <td>주차장 위치</td>
             <td><form:input path="parkingSpot"/></td>
         </tr>
+        <tr>
+            <input type="radio" id="short" name="period" value="short" checked="checked">
+            <label for="short" >단기주차</label>
+            <input type="radio" id="long" name="period" value="long">
+            <label for="long">장기주차</label>
+        </tr>
     </table>
     <input type="submit" value="수정하기"/>
     <input type="button" value="취소하기" onclick="history.back()"/>

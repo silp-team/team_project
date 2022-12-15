@@ -41,6 +41,12 @@
             <td><input type="text" name="carNumber"/></td>
         </tr>
         <tr>
+            <input type="radio" id="short" name="period" value="short" checked="checked">
+            <label for="short" >단기주차</label>
+            <input type="radio" id="long" name="period" value="long">
+            <label for="long">장기주차</label>
+        </tr>
+        <tr>
 <%--            <td align="left"><input type='file' name="fileName"></td>--%>
         <tr>
             <td><a href="list">목록으로 돌아가기</a></td>

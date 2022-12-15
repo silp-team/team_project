@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Board">
     <insert id="insertBoard">
-        insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate)
-        values (#{owner}, #{carType}, #{carNumber}, #{fileName}, #{parkingSpot}, #{regDate})
+        insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate, term)
+        values (#{owner}, #{carType}, #{carNumber}, #{fileName}, #{parkingSpot}, #{regDate}, #{period})
     </insert>
     <update id="updateBoard">
         update PARKING
@@ -12,7 +12,8 @@
             carNumber=#{carNumber},
             fileName=#{fileName},
             outDate=#{outDate},
-            parkingSpot=#{parkingSpot}
+            parkingSpot=#{parkingSpot},
+            term = #{period}
         where seq = #{seq}
     </update>
     <delete id="deleteBoard">
