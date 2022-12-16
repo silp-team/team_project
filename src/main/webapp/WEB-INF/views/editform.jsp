@@ -33,9 +33,9 @@
             <td><form:input path="parkingSpot"/></td>
         </tr>
         <tr>
-            <input type="radio" id="short" name="period" value="short" checked="checked">
+            <input type="radio" id="short" name="term" value="단기" checked="checked">
             <label for="short" >단기주차</label>
-            <input type="radio" id="long" name="period" value="long">
+            <input type="radio" id="long" name="term" value="장기">
             <label for="long">장기주차</label>
         </tr>
     </table>

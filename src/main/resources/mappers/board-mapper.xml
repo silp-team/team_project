@@ -3,7 +3,7 @@
 <mapper namespace="Board">
     <insert id="insertBoard">
         insert into PARKING (owner, carType, carNumber, fileName, parkingSpot, regdate, term)
-        values (#{owner}, #{carType}, #{carNumber}, #{fileName}, #{parkingSpot}, #{regDate}, #{period})
+        values (#{owner}, #{carType}, #{carNumber}, #{fileName}, #{parkingSpot}, #{regDate}, #{term})
     </insert>
     <update id="updateBoard">
         update PARKING
@@ -13,7 +13,7 @@
             fileName=#{fileName},
             outDate=#{outDate},
             parkingSpot=#{parkingSpot},
-            term = #{period}
+            term = #{term}
         where seq = #{seq}
     </update>
     <delete id="deleteBoard">

@@ -310,6 +310,7 @@
         <th>차량 주인</th>
         <th>입차 날짜</th>
         <th>요금(시간당 1천원)</th>
+        <th>기간</th>
         <th>수정</th>
         <th>삭제</th>
     </tr>
@@ -325,6 +326,7 @@
             <td>${u.owner}</td>
             <td>${u.regDate}</td>
             <td>${u.fee}</td>
+            <td>${u.term}</td>
             <td><a href="editform/${u.getSeq()}">Edit</a></td>
             <td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
         </tr>
